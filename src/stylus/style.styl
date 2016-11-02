@@ -12,9 +12,10 @@ Template: mimizuku
 @import '../../../mimizuku/src/stylus/style4child';
 
 sm = 640px;
+lg = 1400px
 
 mincho = @block {
-	font-family:"tbnpmincho-std","ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif
+	font-family:"ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif
 	font-weight:bold
 }
 
@@ -23,10 +24,16 @@ mincho = @block {
 ._l-header{
 	._p-site-branding{
 		padding:3em 10px;
-		text-align:right;
+		text-align:center;
 		font-family: "mrs-eaves",serif;
 	}
 }
+
+a{
+	color:#333;
+	text-decoration:none;
+}
+
 
 /* single */
 
@@ -50,7 +57,10 @@ mincho = @block {
 				top:20%
 		}
 		{mincho}
-		font-size:5vw;
+		font-size:6vw;
+		@media (min-width: lg) {
+			font-size:5vw;
+		}
 		@media (max-width: sm) {
 			font-size:7vw;
 		}
@@ -69,6 +79,9 @@ mincho = @block {
 		position:absolute;
 		left:70% + 7vw;
 		top:10%
+		@media (min-width: lg) {
+			left:70% + 8vw;
+		}
 		@media (max-width: sm) {
 				top:20%
 		}
@@ -85,22 +98,97 @@ mincho = @block {
 	&__location{
 		{mincho}
 		font-size:2vw;
+		@media (min-width: lg) {
+			font-size:1.5vw;
+		}
 		@media (max-width: sm) {
 			font-size:4vw;
 		}
 	}
 	&__shooting_date{
 		font-size:1vw;
+		@media (max-width: sm) {
+			font-size:2vw;
+		}
 		font-family: "mrs-eaves",serif;
 		font-style: normal;
 		font-weight: 300;
+		line-height:1em;
 	}
 	&-meta__shooting{
 		padding:0.5rem 0;
 		font-size:0.5rem;
 		text-align:right;
 	}
+	&-meta{
+		font-size:.8rem;
+		color:#000;
+		&__item{
+			a{
+				color:#000;
+			}
+		}
+	}
 }
+._p-globalnav{
+	&__list{
+		list-style-type:none;
+		margin:0;
+		padding:0;
+		text-align:center;
+	}
+	&__item{
+		display:inline-block;
+		a{
+			display:block;
+			padding:2rem;
+			font-size:2rem;
+		}
+		a[href=""]{
+			i{
+				opacity:0;
+				pointer-events:none;
+			}
+		}
+	}
+}
+
+._p-overlay{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	overflow:auto;
+	background-color:rgba(0,0,0,.9);
+	display:none;
+	&--active{
+		display:block;
+	}
+	&__close{
+		text-align:center;
+		padding:1rem;
+	}
+	&__closebtn{
+		font-size:5rem;
+		color:#FFF;
+	}
+}
+
+
+
+._p-comments{
+	&__title{
+		font-family: "mrs-eaves",serif;
+		font-size:1.6rem;
+		font-weight:normal;
+	}
+	.comment-reply-title{
+		font-size:1rem;
+	}
+
+}
+
 
 @keyframes anime1 {
 	0% {opacity:0;
@@ -154,5 +242,10 @@ mincho = @block {
 			}
 		}
 	}
+}
+
+._p-copyright{
+	font-size:10px;
+	font-size:.5rem;
 }
 

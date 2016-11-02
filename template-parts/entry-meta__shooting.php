@@ -14,7 +14,8 @@ $meta = get_post_custom();
  */
 $entry_meta['body'] = sprintf(
 	'<span class="screen-reader-text">%s</span>
-	<i class="fa fa-body"></i>%s',
+	<i class="fa fa-camera"></i>
+	%s',
 	esc_html( $meta['body'][0] ),
 	esc_html( $meta['body'][0] )
 );
@@ -24,23 +25,24 @@ $entry_meta['body'] = sprintf(
  */
 $entry_meta['lens'] = sprintf(
 	'<span class="screen-reader-text">%s</span>
-	<i class="fa fa-lens"></i>%s',
+	%s',
 	esc_html( $meta['lens'][0] ),
 	esc_html( $meta['lens'][0] )
 );
 
 /**
- * shhoting_date
+ * Tags
  */
-/*
-$entry_meta['shooting_date'] = sprintf(
-	'<span class="screen-reader-text">%s</span>
-	<i class="fa fa-shooting_date"></i>%s',
-	esc_html( $meta['shooting_date'][0] ),
-	esc_html( $meta['shooting_date'][0] )
-);
-*/
-
+$tags = get_the_tag_list( '', ', ' );
+if ( $tags ) {
+	$entry_meta['tags'] = sprintf(
+		'<span class="screen-reader-text">%s</span>
+		<i class="fa fa-tags"></i>
+		%s',
+		esc_html__( 'Tags', 'mimizuku' ),
+		get_the_tag_list( '', ', ' )
+	);
+}
 
 $entry_meta = apply_filters( 'mimizuku_entry_meta_items', $entry_meta );
 ?>

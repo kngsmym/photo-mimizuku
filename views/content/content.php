@@ -5,6 +5,9 @@
  * @license GPL-2.0+
  */
 ?>
+
+<?php get_template_part('template-parts/globalnav'); ?>
+
 <article <?php post_class(); ?>>
 	<header class="_p-entry__header">
 		<div class="_p-entry__keyvisual">
@@ -19,7 +22,6 @@
 	</header>
 
 	<div class="_p-entry__content _c-container">
-		<?php get_template_part( 'template-parts/entry-meta' ); ?>
 		<?php the_content(); ?>
 		<?php get_template_part( 'template-parts/link-pages' ); ?>
 	</div>
@@ -30,3 +32,7 @@
 	}
 	?>
 </article>
+
+<?php get_template_part('template-parts/globalnav'); ?>
+
+<?php get_template_part('template-parts/overlaygrid'); ?>
