@@ -6,7 +6,7 @@
  */
 ?>
 
-<?php get_template_part('template-parts/globalnav'); ?>
+<?php get_template_part('template-parts/photo-nav'); ?>
 
 <article <?php post_class(); ?>>
 	<header class="_p-entry__header">
@@ -33,6 +33,6 @@
 	?>
 </article>
 
-<?php get_template_part('template-parts/globalnav'); ?>
+<?php get_template_part('template-parts/photo-nav'); ?>
 
 <?php get_template_part('template-parts/overlaygrid'); ?>

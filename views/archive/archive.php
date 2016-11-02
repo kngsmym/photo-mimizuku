@@ -6,7 +6,9 @@
  */
 ?>
 
-<?php get_template_part( 'template-parts/pagination' ); ?>
+<h2 class="_p-archive__title"><?php the_archive_title(); ?></h2>
+
+<?php get_template_part('template-parts/photo-nav'); ?>
 
 <ul class="_p-entries _c-container _c-row">
 	<?php while ( have_posts() ) : the_post(); ?>
@@ -17,3 +19,5 @@
 </ul>
 
 <?php get_template_part( 'template-parts/pagination' ); ?>
+
+<?php get_template_part('template-parts/overlaygrid'); ?>

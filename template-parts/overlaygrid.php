@@ -21,5 +21,8 @@ $the_query = new WP_Query( $args );
 		</li>
 		<?php endwhile;endif; ?>
 	</ul>
+	<div class="_p-overlay__close">
+		<a href="#" class="_p-overlay__closebtn"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+	</div>
 </div>
 
