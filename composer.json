@@ -3,20 +3,31 @@
     "inc2734/mimizuku": "*",
     "composer/installers": "^1.2"
   },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "*",
+    "wp-coding-standards/wpcs": "*",
+    "phpmd/phpmd": "2.*"
+  },
   "extra": {
     "installer-paths": {
-      "../{$name}": ["type:wordpress-theme"]
+      "../{$name}": ["type:wordpress-theme"],
+      "../../plugins/{$name}": ["type:wordpress-plugin"]
     }
   },
   "config": {
-    "process-timeout": 10000
+    "process-timeout": 0
   },
   "scripts": {
+    "test": [
+      "php vendor/bin/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php",
+      "vendor/bin/phpmd ./ text phpmd.ruleset.xml --suffixes php --exclude /vendor/,/tests/",
+      "bash app/bin/phpunit.sh"
+    ],
     "build-mimizuku": [
-      "current=$(cd $(dirname $0) && pwd) && cd ${current}/../mimizuku && composer install --no-dev && npm install && npm run gulp build"
+      "cd $(cd $(dirname $0) && pwd)/../mimizuku && composer install --no-dev && npm install && npm run gulp build"
     ],
     "build-mimizuku-child": [
-      "current=$(cd $(dirname $0) && pwd) && cd ${current}/ && npm install && npm run gulp build"
+      "cd $(cd $(dirname $0) && pwd)/ && npm install && npm run gulp build"
     ],
     "post-install-cmd": [
       "composer build-mimizuku",
@@ -25,6 +36,11 @@
     "post-update-cmd": [
       "composer build-mimizuku",
       "npm run gulp build"
-    ]
+    ],
+    "scaffold-tests": "bash $(cd $(dirname $0) && pwd)/../mimizuku/app/bin/scaffold-tests.sh",
+    "theme-unit-test": "bash $(cd $(dirname $0) && pwd)/../mimizuku/app/bin/theme-unit-test.sh",
+    "theme-unit-test-ja": "bash $(cd $(dirname $0) && pwd)/../mimizuku/app/bin/theme-unit-test-ja.sh",
+    "wpphpunit": "bash $(cd $(dirname $0) && pwd)/../mimizuku/app/bin/wpphpunit.sh",
+    "phpunit": "bash $(cd $(dirname $0) && pwd)/../mimizuku/app/bin/phpunit.sh"
   }
 }

@@ -186,24 +186,26 @@ $ bash ../mimizuku/app/bin/server.sh
 
 ### Import theme unit test data
 ```
-# pwd → /PATH/TO/wp-content/themes/your-theme-name
-$ bash ../mimizuku/app/bin/theme-unit-test.sh
+$ composer theme-unit-test
 ```
 
 ### Generate files needed for running PHPUnit tests.
 ```
-# pwd → /PATH/TO/wp-content/themes/your-theme-name
-$ bash ../mimizuku/app/bin/scaffold-tests.sh
+$ composer scaffold-tests
 ```
 
 ### Run PHPUnit tests
 #### Generate WordPress tests environment and run phpunit
 ```
-# pwd → /PATH/TO/wp-content/themes/your-theme-name
-$ bash ../mimizuku/app/bin/wpphpunit.sh
+$ composer wpphpunit
 ```
 
-#### Run phpunit only
+#### Run phpunit only (If WordPress tests environment, auto generating)
 ```
-$ phpunit
+$ composer phpunit
+```
+
+### Run WorPress conding standard check, PHPMD, PHPUnit tests
+```
+$ composer test
 ```
