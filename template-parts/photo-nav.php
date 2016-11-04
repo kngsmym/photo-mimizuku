@@ -23,7 +23,7 @@ endif;
 	<ul class="_p-globalnav__list">
 	<?php if(!is_archive()): ?>
 		<li class="_p-globalnav__item">
-			<a href="<?php echo $next_url; ?>"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
+			<a href="<?php echo $next_url; ?>" class="pjax-trigger"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
 		</li>
 	<?php endif; ?>
 		<li class="_p-globalnav__item">
@@ -31,7 +31,7 @@ endif;
 		</li>
 	<?php if(!is_archive()): ?>
 		<li class="_p-globalnav__item">
-			<a href="<?php echo $prev_url; ?>"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a>
+			<a href="<?php echo $prev_url; ?>" class="pjax-trigger"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a>
 		</li>
 	<?php endif; ?>
 	</ul>
