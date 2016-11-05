@@ -37,5 +37,3 @@
 	</div>
 </article>
 
-
-<?php get_template_part('template-parts/overlaygrid'); ?>

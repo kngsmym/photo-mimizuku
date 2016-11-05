@@ -1,7 +1,8 @@
 jQuery(function($) {
 	var current_scrollY;
 
-	$(document).on('click', '._p-overlay__trigger', function(){
+	$(document).on('click', '._p-overlay__trigger', function(e){
+		e.preventDefault();
 		$('._p-overlay').fadeIn();
 		current_scrollY = $( window ).scrollTop(); 
 		$('._l-container').css( {
@@ -10,7 +11,8 @@ jQuery(function($) {
 			top: -1 * current_scrollY
 		});
 	});
-	$(document).on('click', '._p-overlay__closebtn', function(){
+	$(document).on('click', '._p-overlay__closebtn', function(e){
+		e.preventDefault();
 		$('._p-overlay').fadeOut();
 		$( '._l-container' ).attr( { style: '' } );
 	});
