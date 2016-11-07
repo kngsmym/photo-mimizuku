@@ -37,3 +37,7 @@ jQuery(function($) {
 });
 
 
+
+//		$('._p-tags__item').each(function(){
+//			$(this).removeClass('_p-tags__item--active');
+//		});

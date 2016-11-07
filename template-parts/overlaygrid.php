@@ -13,21 +13,22 @@
 
 	<card>
 
-	<div class="_p-spinner__container">
-		<div class="spinner">
-		<div class="dot1"></div>
-		<div class="dot2"></div>
+		<div class="_p-spinner__container active">
+			<div class="spinner">
+			<div class="dot1"></div>
+			<div class="dot2"></div>
+			</div>
 		</div>
-	</div>
 
-	<ul class="_p-tags__list _c-container">
-		<li class="_p-tags__item _p-tags__item--active"><a onClick={ tags_list } href="<?php echo home_url(); ?>/wp-json/wp/v2/posts?_embed&per_page=100">全て</a></li>
-		<?php
-		$posttags = get_tags();
-		if ($posttags):foreach($posttags as $tag): ?>
-		<li class="_p-tags__item"><a onClick={ tags_list } href="<?php echo home_url(); ?>/wp-json/wp/v2/posts?tags=<?php echo $tag->term_id; ?>&_embed"><?php echo $tag->name; ?></a></li>
-		<?php endforeach;endif; ?>
-	</ul>
+		<ul class="_p-tags__list _c-container">
+			<li class="_p-tags__item _p-tags__item--active"><a onClick={ tags_list } href="<?php echo home_url(); ?>/wp-json/wp/v2/posts?_embed&per_page=100">全て</a></li>
+			<?php
+			$posttags = get_tags();
+			if ($posttags):foreach($posttags as $tag): ?>
+			<li class="_p-tags__item"><a onClick={ tags_list } href="<?php echo home_url(); ?>/wp-json/wp/v2/posts?tags=<?php echo $tag->term_id; ?>&_embed"><?php echo $tag->name; ?></a></li>
+			<?php endforeach;endif; ?>
+		</ul>
+
 
 		<ul class="_p-entries _c-container _c-row">
 			<li each={ data } class="_p-entries__item _c-row__col _c-row__col--lg-1-8 _c-row__col--md-1-6 _c-row__col--1-3">
@@ -55,6 +56,7 @@
 			});
 			$(e.target).parent().addClass('_p-tags__item--active');
 			loadingThumbnails(e.target.href);
+			$('._p-entries').fadeTo('slow', 0);
 		}
 
 		function loadingThumbnails(url){
@@ -73,9 +75,28 @@
 			}).done(function( data ){
 				posts.data = data
 				posts.update()
-				$('._p-spinner__container').removeClass('active');
+				image_loaded();
 			});
 		}
+
+		function image_loaded(){
+
+			var allImage = $("._p-pjax__container ._p-entries img");
+			var allImageCount = allImage.length;
+			var completeImageCount = 0;
+			var complete = false;
+
+			for(var i = 0; i < allImageCount; i++){
+				$(allImage[i]).bind("load", function(){
+					completeImageCount ++;
+					if (allImageCount == completeImageCount){
+						$('._p-pjax__container ._p-entries').fadeTo('slow', 1);
+						$('._p-spinner__container').removeClass('active');
+					}
+				});
+			}
+		}
+
 		loadingThumbnails(url);
 
 	</card>

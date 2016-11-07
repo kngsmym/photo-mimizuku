@@ -247,10 +247,6 @@ a{
 			letter-spacing:-1px;
 		}
 		a{
-			img{
-				opacity:1;
-				transition:1s;
-			}
 			&:hover{
 				img{
 					opacity:.5;
@@ -258,6 +254,9 @@ a{
 			}
 		}
 	}
+}
+._p-pjax__container ._p-entries{
+	opacity:0;
 }
 
 ._p-copyright{
@@ -293,16 +292,14 @@ a{
 	}
 }
 
-/* spinner */
 
+/* spinner */
 
 ._p-spinner__container{
 	z-index:20;
 	width:100%
 	height:100%;
 	position:absolute;
-	left:0;
-	top:0;
 	background-color:rgba(0,0,0,.8);
 	display:none;
 }
@@ -311,10 +308,15 @@ a{
 }
 
 .spinner {
-  margin: 100px auto;
+	position:absolute;
+	left:0;
+	right:0
+	top:0;
+//	bottom:0;
+	margin:auto;
+
   width: 40px;
   height: 40px;
-  position: relative;
   text-align: center;
   
   -webkit-animation: sk-rotate 2.0s infinite linear;
