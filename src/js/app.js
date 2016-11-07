@@ -27,9 +27,9 @@ jQuery(function($) {
     	$('#pjax-container .inner').fadeOut();
 	});
     $(document).bind('pjax:render', function() {
-    	$('#pjax-container .inner img').bind("load", function(){  
-	    	$('#pjax-container .inner').css('display','none');
-	    	$('#pjax-container .inner').fadeIn();
+    	$('#pjax-container .inner').css('opacity','0');
+    	$('#pjax-container .inner img').bind("load", function(){
+	    	$('#pjax-container .inner').fadeTo("normal", 1);
 	    });  
 	});
 

@@ -4,7 +4,7 @@
 		<a href="#" class="_p-overlay__closebtn"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
 	</div>
 
-    <card data='{ data }'></card>
+    <card data='{ data }' class="_p-pjax__container"></card>
 
 <script src='http://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
@@ -13,8 +13,15 @@
 
 	<card>
 
+	<div class="_p-spinner__container">
+		<div class="spinner">
+		<div class="dot1"></div>
+		<div class="dot2"></div>
+		</div>
+	</div>
+
 	<ul class="_p-tags__list _c-container">
-		<li class="_p-tags__item"><a onClick={ tags_list } href="<?php echo home_url(); ?>/wp-json/wp/v2/posts?_embed&per_page=100">全て</a></li>
+		<li class="_p-tags__item _p-tags__item--active"><a onClick={ tags_list } href="<?php echo home_url(); ?>/wp-json/wp/v2/posts?_embed&per_page=100">全て</a></li>
 		<?php
 		$posttags = get_tags();
 		if ($posttags):foreach($posttags as $tag): ?>
@@ -43,11 +50,17 @@
 
 		tags_list(e){
 			e.preventDefault();
-			url = e.target.href;
-			myupdate(url);
+			$('._p-tags__item').each(function(){
+				$(this).removeClass('_p-tags__item--active');
+			});
+			$(e.target).parent().addClass('_p-tags__item--active');
+			loadingThumbnails(e.target.href);
 		}
 
-		function myupdate(url){
+		function loadingThumbnails(url){
+
+			$('._p-spinner__container').addClass('active');
+
 			$.ajax({
 				url: url,
 				type:'GET',
@@ -60,9 +73,10 @@
 			}).done(function( data ){
 				posts.data = data
 				posts.update()
+				$('._p-spinner__container').removeClass('active');
 			});
 		}
-		myupdate(url);
+		loadingThumbnails(url);
 
 	</card>
 
