@@ -20,6 +20,6 @@ add_action( 'wp_enqueue_scripts', 'child_scripts' );
 add_filter( 'wp_calculate_image_srcset', '__return_false' );
 
 function overlay_grid() {
-	get_template_part('template-parts/overlaygrid');
+	get_template_part('template-parts/overlay-grid');
 }
 add_action( 'wp_footer', 'overlay_grid' );

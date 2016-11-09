@@ -19,18 +19,18 @@ endif;
 </div>
 <?php endif;*/ ?>
 
-<div class="_p-globalnav">
-	<ul class="_p-globalnav__list">
+<div class="_p-photo-nav">
+	<ul class="_p-photo-nav__list">
 	<?php if(!is_archive()): ?>
-		<li class="_p-globalnav__item">
+		<li class="_p-photo-nav__item">
 			<a href="<?php echo $next_url; ?>" class="pjax-trigger"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
 		</li>
 	<?php endif; ?>
-		<li class="_p-globalnav__item">
+		<li class="_p-photo-nav__item">
 			<a href="#" class="_p-overlay__trigger"><i class="fa fa-th" aria-hidden="true"></i></a>
 		</li>
 	<?php if(!is_archive()): ?>
-		<li class="_p-globalnav__item">
+		<li class="_p-photo-nav__item">
 			<a href="<?php echo $prev_url; ?>" class="pjax-trigger"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a>
 		</li>
 	<?php endif; ?>

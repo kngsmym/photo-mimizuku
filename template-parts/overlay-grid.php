@@ -4,7 +4,7 @@
 		<a href="#" class="_p-overlay__closebtn"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
 	</div>
 
-    <card data='{ data }' class="_p-pjax__container"></card>
+    <card data='{ data }' class="_p-rest__container"></card>
 
 <script src='http://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
@@ -81,20 +81,22 @@
 
 		function image_loaded(){
 
-			var allImage = $("._p-pjax__container ._p-entries img");
+			var allImage = $("._p-rest__container ._p-entries img");
 			var allImageCount = allImage.length;
 			var completeImageCount = 0;
 			var complete = false;
 
 			for(var i = 0; i < allImageCount; i++){
 				$(allImage[i]).bind("load", function(){
+console.log(completeImageCount);
 					completeImageCount ++;
 					if (allImageCount == completeImageCount){
-						$('._p-pjax__container ._p-entries').fadeTo('slow', 1);
+						$('._p-rest__container ._p-entries').fadeTo('slow', 1);
 						$('._p-spinner__container').removeClass('active');
 					}
 				});
 			}
+console.log(allImageCount + ":" + completeImageCount);
 		}
 
 		loadingThumbnails(url);

@@ -8,7 +8,10 @@
 
 
 <article id="pjax-container" <?php post_class(); ?>>
+
 	<?php get_template_part('template-parts/photo-nav'); ?>
+
+
 	<div class="inner">
 
 		<header class="_p-entry__header">
