@@ -88,7 +88,6 @@
 
 			for(var i = 0; i < allImageCount; i++){
 				$(allImage[i]).bind("load", function(){
-console.log(completeImageCount);
 					completeImageCount ++;
 					if (allImageCount == completeImageCount){
 						$('._p-rest__container ._p-entries').fadeTo('slow', 1);
@@ -96,7 +95,6 @@ console.log(completeImageCount);
 					}
 				});
 			}
-console.log(allImageCount + ":" + completeImageCount);
 		}
 
 		loadingThumbnails(url);
