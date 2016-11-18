@@ -21,7 +21,13 @@ jQuery(function($) {
 
     $.pjax({
         area : '#pjax-container',
-        link : 'a.pjax-trigger'
+        link : 'a.pjax-trigger',
+        callback: function(event, setting) {
+        	var href = window.location.href;
+        	if(href.indexOf('photo') != -1){
+	            ga('send','pageview', location.pathname.slice(1));
+        	}
+        }
     });
     $(document).bind('pjax:fetch', function() {
     	$('#pjax-container .inner').fadeOut();
