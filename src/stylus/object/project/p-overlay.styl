@@ -1,0 +1,23 @@
+/* overlay */
+
+._p-overlay{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	overflow:auto;
+	background-color:rgba(0,0,0,.9);
+	display:none;
+	&--active{
+		display:block;
+	}
+	&__close{
+		text-align:center;
+		padding:1rem;
+	}
+	&__closebtn{
+		font-size:5rem;
+		color:#FFF;
+	}
+}

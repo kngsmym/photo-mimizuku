@@ -6,10 +6,10 @@
 
     <card data='{ data }' class="_p-rest__container"></card>
 
-<script src='http://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/riot/2.5.0/riot+compiler.min.js'></script>
-<script type="riot/tag">
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/riot/2.5.0/riot+compiler.min.js'></script>
+	<script type="riot/tag">
 
 	<card>
 
@@ -25,7 +25,7 @@
 			<?php
 			$posttags = get_tags();
 			if ($posttags):foreach($posttags as $tag): ?>
-			<li class="_p-tags__item"><a onClick={ tags_list } href="<?php echo home_url(); ?>/wp-json/wp/v2/posts?tags=<?php echo $tag->term_id; ?>&_embed"><?php echo $tag->name; ?></a></li>
+			<li class="_p-tags__item"><a onClick={ tags_list } href="<?php echo home_url(); ?>/wp-json/wp/v2/posts?tags=<?php echo esc_html($tag->term_id); ?>&_embed"><?php echo esc_html($tag->name); ?></a></li>
 			<?php endforeach;endif; ?>
 		</ul>
 
@@ -56,7 +56,7 @@
 			});
 			$(e.target).parent().addClass('_p-tags__item--active');
 			loadingThumbnails(e.target.href);
-			$('._p-entries').fadeTo('slow', 0);
+			$('._p-rest__container ._p-entries').fadeTo('slow', 0);
 		}
 
 		function loadingThumbnails(url){
