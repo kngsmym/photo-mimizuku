@@ -23,3 +23,16 @@ function overlay_grid() {
 	get_template_part('template-parts/overlay-grid');
 }
 add_action( 'wp_footer', 'overlay_grid' );
+
+
+//arrow WP REST API for logged in user
+/*add_filter( 'rest_authentication_errors', function( $result ) {
+ if ( ! empty( $result ) ) {
+ return $result;
+ }
+ if ( ! is_user_logged_in() ) {
+ return new WP_Error( 'restx_logged_out', 'Sorry, you must be logged in to make a request.', array( 'status' => 401 ) );
+ }
+ return $result;
+});
+*/
