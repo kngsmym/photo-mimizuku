@@ -3,7 +3,8 @@
 ._p-archive__title{
 	{mymincho}
 	font-weight:normal;
-	font-size:1rem;
+	font-size:16px;
+	font-size:1.6rem;
 	text-align:center;
 	margin:1em;
 	@media (max-width: sm) {
@@ -24,6 +25,16 @@
 	&-summary{
 		position:relative;
 		overflow:hidden;
+		&__thumbnail{
+			overflow:hidden;
+			position:relative;
+			.photo{
+				max-width:100%;
+				transition:2s;
+				border-radius:3px;
+//				filter:grayscale(100%);
+			}
+		}
 		&__body{
 			position:absolute;
 			top:0;
@@ -37,7 +48,7 @@
 		}
 		&__title{
 			{mymincho}
-			font-size:.8rem;
+			font-size:1.2rem;
 			color:#FFF;
 			text-shadow:0 0 2px #000;
 			line-height:1em;
@@ -45,8 +56,9 @@
 		}
 		a{
 			&:hover{
-				img{
-					opacity:.5;
+				.photo{
+					transform: scale(1.1,1.1);
+//					filter:grayscale(0%);
 				}
 			}
 		}

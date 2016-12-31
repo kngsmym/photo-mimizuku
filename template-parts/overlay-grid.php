@@ -31,11 +31,11 @@
 
 
 		<ul class="_p-entries _c-container _c-row">
-			<li each={ data } class="_p-entries__item _c-row__col _c-row__col--lg-1-8 _c-row__col--md-1-6 _c-row__col--1-3">
+			<li each={ data } class="_p-entries__item _c-row__col _c-row__col--lg-1-6 _c-row__col--md-1-6 _c-row__col--1-3">
 				<section class="_p-entry-summary">
 					<a href="{ link }" >
 						<div class="_p-entry-summary__thumbnail">
-							<img src="{ _embedded["wp:featuredmedia"][0].media_details.sizes.thumbnail.source_url }" alt=""/>
+							<img class="photo" src="{ _embedded["wp:featuredmedia"][0].media_details.sizes.thumbnail.source_url }" alt=""/>
 						</div>
 
 						<div class="_p-entry-summary__body">
